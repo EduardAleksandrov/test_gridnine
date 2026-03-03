@@ -11,7 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class FilterRulesTest {
-        private LocalDateTime now;
+    
+    private LocalDateTime now;
 
     @BeforeEach
     void setUp() {
@@ -75,7 +76,7 @@ public class FilterRulesTest {
         assertTrue(result.contains(singleSegment));
     }
 
-        /**
+    /**
      * Helper to create flights without repeating Builder logic
      */
     private Flight createFlight(LocalDateTime... dates) {

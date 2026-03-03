@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-// import javax.swing.text.Segment;
-
 
 /**
  * Factory class to get sample list of flights.

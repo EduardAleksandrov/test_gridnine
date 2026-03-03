@@ -37,6 +37,12 @@ application {
     mainClass = "com.gridnine.App"
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "com.gridnine.App"
+    }
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
