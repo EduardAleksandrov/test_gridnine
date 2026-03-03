@@ -80,7 +80,7 @@ public class FilterRulesTest {
      * Helper to create flights without repeating Builder logic
      */
     private Flight createFlight(LocalDateTime... dates) {
-        java.util.List<Segment> segments = new java.util.ArrayList<>();
+        List<Segment> segments = new java.util.ArrayList<>();
         for (int i = 0; i < dates.length; i += 2) {
             segments.add(new Segment(dates[i], dates[i + 1]));
         }

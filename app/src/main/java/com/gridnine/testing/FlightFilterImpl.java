@@ -3,7 +3,7 @@ package com.gridnine.testing;
 import java.util.List;
 
 /**
- * Реализация интерфейса для реализации различных правил фильтрации.
+ * Реализация использования интерфейса для различных правил фильтрации.
  */
 public class FlightFilterImpl {
     private final List<Flight> flights;
