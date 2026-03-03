@@ -1,7 +1,7 @@
 package com.gridnine.testing;
 
 import java.util.List;
-import java.util.stream.Collectors;
+// import java.util.stream.Collectors;
 
 /**
  * Интерфейс для реализации различных правил фильтрации.

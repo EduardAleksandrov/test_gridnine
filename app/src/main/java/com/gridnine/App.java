@@ -3,12 +3,11 @@
  */
 package com.gridnine;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.time.Duration;
 
+import com.gridnine.testing.FilterRules;
 import com.gridnine.testing.Flight;
-import com.gridnine.testing.Segment;
+// import com.gridnine.testing.Segment;
 import com.gridnine.testing.FlightBuilder;
 import com.gridnine.testing.FlightFilterImpl;
 
@@ -27,33 +26,18 @@ public class App {
 
         // 1. Исключить вылет до текущего момента времени
         System.out.println("\n--- 1. Исключен вылет до текущего момента ---");
-        List<Flight> filtered1 = filterService.filterBy(f -> f.stream()
-                .filter(flight -> flight.getSegments().get(0).getDepartureDate().isAfter(LocalDateTime.now()))
-                .collect(java.util.stream.Collectors.toList()));
+        List<Flight> filtered1 = filterService.filterBy(FilterRules.DEPARTURE_IN_PAST);
         filtered1.forEach(System.out::println);
 
         // 2. Исключить сегменты с датой прилёта раньше даты вылета
         System.out.println("\n--- 2. Исключены сегменты с прилетом раньше вылета ---");
-        List<Flight> filtered2 = filterService.filterBy(fList -> fList.stream()
-                .filter(flight -> flight.getSegments().stream()
-                        .allMatch(seg -> seg.getArrivalDate().isAfter(seg.getDepartureDate())))
-                .collect(java.util.stream.Collectors.toList()));
+        List<Flight> filtered2 = filterService.filterBy(FilterRules.ARRIVAL_BEFORE_DEPARTURE);
         filtered2.forEach(System.out::println);
 
         // 3. Исключить перелеты, где общее время на земле > 2 часов
         System.out.println("\n--- 3. Исключено время на земле более 2 часов ---");
-        List<Flight> filtered3 = filterService.filterBy(fList -> fList.stream()
-                .filter(flight -> {
-                    List<Segment> segs = flight.getSegments();
-                    if (segs.size() <= 1) return true;
-                    long groundTime = 0;
-                    for (int i = 0; i < segs.size() - 1; i++) {
-                        groundTime += Duration.between(segs.get(i).getArrivalDate(), 
-                                                      segs.get(i + 1).getDepartureDate()).toHours();
-                    }
-                    return groundTime <= 2;
-                })
-                .collect(java.util.stream.Collectors.toList()));
+        List<Flight> filtered3 = filterService.filterBy(FilterRules.GROUND_TIME_EXCEEDS_TWO_HOURS);
         filtered3.forEach(System.out::println);
+
     }
 }

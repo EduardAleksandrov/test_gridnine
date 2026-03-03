@@ -1,8 +1,11 @@
 package com.gridnine.testing;
 
 import java.util.List;
-import java.util.stream.Collectors;
+// import java.util.stream.Collectors;
 
+/**
+ * Реализация интерфейса для реализации различных правил фильтрации.
+ */
 public class FlightFilterImpl {
     private final List<Flight> flights;
 
