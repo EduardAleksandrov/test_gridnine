@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.gridnine.testing.FilterRules;
 import com.gridnine.testing.Flight;
-// import com.gridnine.testing.Segment;
 import com.gridnine.testing.FlightBuilder;
 import com.gridnine.testing.FlightFilterImpl;
 

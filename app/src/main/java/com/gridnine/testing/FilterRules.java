@@ -3,19 +3,23 @@ package com.gridnine.testing;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.time.Duration;
+import java.util.stream.Collectors;
 
+/**
+ * Filter rules
+ */
 public class FilterRules {
 
     // 1. Исключен вылет до текущего момента
     public static final FlightFilter DEPARTURE_IN_PAST = f -> f.stream()
                 .filter(flight -> flight.getSegments().get(0).getDepartureDate().isAfter(LocalDateTime.now()))
-                .collect(java.util.stream.Collectors.toList());
+                .collect(Collectors.toList());
 
     // 2. Исключить сегменты с датой прилёта раньше даты вылета
     public static final FlightFilter ARRIVAL_BEFORE_DEPARTURE = fList -> fList.stream()
                 .filter(flight -> flight.getSegments().stream()
                         .allMatch(seg -> seg.getArrivalDate().isAfter(seg.getDepartureDate())))
-                .collect(java.util.stream.Collectors.toList());
+                .collect(Collectors.toList());
 
     // 3. Исключить перелеты, где общее время на земле > 2 часов
     public static final FlightFilter GROUND_TIME_EXCEEDS_TWO_HOURS = fList -> fList.stream()
@@ -29,5 +33,5 @@ public class FilterRules {
                     }
                     return groundTime <= 2;
                 })
-                .collect(java.util.stream.Collectors.toList());
+                .collect(Collectors.toList());
 }
