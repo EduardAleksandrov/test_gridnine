@@ -13,7 +13,7 @@ public class Flight {
         segments = segs;
     }
 
-    public List<Segment> getSegments() {
+    List<Segment> getSegments() {
         return segments;
     }
 

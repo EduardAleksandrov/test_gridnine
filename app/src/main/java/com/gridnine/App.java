@@ -11,10 +11,6 @@ import com.gridnine.testing.FlightFilterImpl;
  * Program entry point
  */
 public class App {
-    public String getGreeting() {
-        return "Hello Gridnine!";
-    }
-
     public static void main(String[] args) {
         
         List<Flight> flights = FlightBuilder.createFlights();
@@ -38,5 +34,9 @@ public class App {
         List<Flight> filtered3 = filterService.filterBy(FilterRules.GROUND_TIME_EXCEEDS_TWO_HOURS);
         filtered3.forEach(System.out::println);
 
+    }
+
+    public String getGreeting() {
+        return "Hello Gridnine!";
     }
 }
